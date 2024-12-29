@@ -1,0 +1,15 @@
+{
+  "name": "ordersync",
+  "version": "1.0.0",
+  "description": "Online Food Ordering POS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"cd Frontend && npm run dev\" \"cd Backend && npm run dev\""
+  },
+  "author": "Falak Shair",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^9.1.1"
+  }
+}
