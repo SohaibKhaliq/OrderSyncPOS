@@ -27,6 +27,7 @@ const dashboardRoutes = require("./routes/dashboard.routes")
 const reportsRoutes = require("./routes/reports.routes")
 const qrMenuRoutes = require("./routes/qrmenu.routes")
 const superAdminRoutes = require("./routes/superadmin.routes")
+const paymentRoutes = require("./routes/payment.routes")
 // routes import
 
 
@@ -100,6 +101,7 @@ app.use("/api/v1/dashboard", dashboardRoutes);
 app.use("/api/v1/reports", reportsRoutes);
 app.use("/api/v1/qrmenu", qrMenuRoutes);
 app.use("/api/v1/superadmin", superAdminRoutes);
+app.use("/api/v1/payment", paymentRoutes);
 // routes
 
 app.get("/", (req, res)=>{

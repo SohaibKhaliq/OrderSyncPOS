@@ -7,7 +7,6 @@ import { useLocation, useParams , useNavigate } from 'react-router-dom';
 import { toast } from "react-hot-toast";
 import { validatePhone } from '../utils/phoneValidator';
 import { SocketContext } from '../contexts/SocketContext';
-import { createCheckoutSession } from '../controllers/payment.controller';
 
 const CartPage = () => {
   const { socket, isSocketConnected } = useContext(SocketContext);
@@ -188,26 +187,6 @@ const CartPage = () => {
       })
     };
 
-    const redirectToStripeCheckout = async () => {
-      try {
-        const tableId = storeTable?.id || null;
-        const customerType = showPhoneFields ? "CUSTOMER" : "WALKIN";
-        const customer = showPhoneFields
-          ? {
-              name: nameRef.current?.value || "",
-              phone: phoneRef.current?.value || "",
-            }
-          : { name: "Guest", phone: "" };
-    
-        const res = await createCheckoutSession(cartItems, customer, customerType, tableId, qrcode);
-        if (res.status === 200) {
-          window.location.href = res.data.url;
-        }
-      } catch (error) {
-        console.error(error);
-        toast.error("Failed to redirect to Stripe checkout.");
-      }
-    };
   return (
     <div className='w-full'>
       <div className='container w-full md:w-96 mx-auto flex justify-center items-center'>
@@ -420,12 +399,6 @@ const CartPage = () => {
               className="rounded-lg hover:bg-restro-green-dark transition active:scale-95 hover:shadow-lg px-4 py-4 bg-restro-green text-white w-full text-xl font-semibold"
             >
               Place Order
-            </button>
-            <button
-              onClick={redirectToStripeCheckout}
-              className="rounded-lg hover:bg-restro-green-dark transition active:scale-95 hover:shadow-lg px-4 py-4 bg-restro-green text-white w-full text-xl font-semibold"
-            >
-              Pay with Stripe
             </button>
           </div>
         </div>
