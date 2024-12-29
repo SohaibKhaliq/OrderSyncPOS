@@ -188,6 +188,27 @@ const CartPage = () => {
       })
     };
 
+    // const redirectToStripeCheckout = async () => {
+    //   try {
+    //     const deliveryType = null;
+    //     const tableId = storeTable?.id || null;
+    //     const customerType = showPhoneFields ? "CUSTOMER" : "WALKIN";
+    //     const customer = showPhoneFields
+    //       ? {
+    //           name: nameRef.current?.value || "",
+    //           phone: phoneRef.current?.value || "",
+    //         }
+    //       : { name: "Guest", phone: "" };
+
+    //     const res = await createCheckoutSession(cartItems, customer, customerType, tableId, qrcode);
+    //     if (res.status === 200) {
+    //       window.location.href = res.data.url;
+    //     }
+    //   } catch (error) {
+    //     console.error(error);
+    //     toast.error("Failed to redirect to Stripe checkout.");
+    //   }
+    // };
     const redirectToStripeCheckout = async () => {
       try {
         const tableId = storeTable?.id || null;

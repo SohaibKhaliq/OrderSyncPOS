@@ -1,26 +1,24 @@
-import React from "react";
-import { IconCircleCheckFilled } from "@tabler/icons-react";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function OrderSuccessPage() {
+const OrderSuccessPage = () => {
+  const navigate = useNavigate();
+
+  const handleReturnToCart = () => {
+    navigate('/m/cart');
+  };
+
   return (
-    <div className="w-full min-h-screen flex justify-center items-center bg-gray-100 p-4 md:w-96 mx-auto">
-      <div className="w-full md:w-96 mx-auto max-w-sm bg-white shadow-lg rounded-xl px-10 py-8 flex flex-col justify-between mx-2">
-        <div className="text-center mb-6">
-          <p className="text-sm text-gray-500">
-            Thank you for choosing us !
-          </p>
-        </div>
-
-        <div className="text-center mb-6">
-          <IconCircleCheckFilled className="text-restro-green mx-auto" size={150} />
-          <p className="text-md text-gray-600 tracking-wide mt-2 font-bold">
-            Order Placed Successfully
-          </p>
-        </div>
-
-      </div>
+    <div className="w-full h-screen flex flex-col justify-center items-center">
+      <h1 className="text-3xl font-bold mb-4">Payment Successful!</h1>
+      <button
+        onClick={handleReturnToCart}
+        className="bg-restro-green text-white py-2 px-4 rounded-lg"
+      >
+        Return to Cart
+      </button>
     </div>
   );
-}
+};
 
 export default OrderSuccessPage;
